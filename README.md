@@ -23,10 +23,13 @@ For each of these vulnerabilities, I plan to create a webpage containing:
 <div align="center">
 	<table>
 		<tr>
-			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/php.png" alt="Angular" title="Angular"/></td>
-			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/docker.png" alt="TypeScript" title="TypeScript"/></td>
-			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/nginx.png" alt="Python" title="Python"/></td>
-			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/mariadb.png" alt="Flask" title="Flask"/></td>
+			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/php.png" alt="PHP" title="PHP"/></td>
+			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/docker.png" alt="Docker" title="Docker"/></td>
+			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/nginx.png" alt="Nginx" title="Nginx"/></td>
+			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/mariadb.png" alt="MadiaDB" title="MadiaDB"/></td>
+		</tr>
+		<tr>
+			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/figma.png" alt="Figma" title="Figma"/></td>
 		</tr>
 	</table>
 </div>
