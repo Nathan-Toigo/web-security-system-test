@@ -11,7 +11,9 @@ services:
       - php
 
   php:
-    image: php:8.2-fpm
+    build:
+      context: ./
+      dockerfile: Dockerfile_PHP
     container_name: php
     volumes:
       - ./src:/var/www/public
