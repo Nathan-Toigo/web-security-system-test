@@ -15,9 +15,11 @@ RUN apt-get update && apt-get install -y \
 
 
 
-COPY ./src .
+# COPY ./public /var/www/public
+# COPY ./app /var/www/public/app
+# COPY ./core /var/www/public/core
 
-WORKDIR /var/www/html
+WORKDIR /var/www/public
 
 # Expose the default PHP-FPM port
 EXPOSE 9000
