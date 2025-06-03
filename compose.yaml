@@ -6,7 +6,7 @@ services:
       - "8080:80"
     volumes:
       - ./public:/var/www/public
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./default.conf:/etc/nginx/conf.d/default.conf 
     depends_on:
       - php
 
@@ -15,11 +15,6 @@ services:
       context: ./
       dockerfile: Dockerfile_PHP
     container_name: php
-    volumes:
-      - ./public:/var/www/public
-      - ./app:/var/www/public/app
-      - ./core:/var/www/public/core
-      - ./php/php.ini:/usr/local/etc/php/conf.d/custom.ini
     depends_on:
       - db
 

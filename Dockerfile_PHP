@@ -1,7 +1,9 @@
 # Use the official PHP image as the base image
 FROM php:8.2-fpm
 
-# Install required dependencies for MariaDB and PHP extensions
+
+WORKDIR /var/www/public
+
 RUN apt-get update && apt-get install -y \
     mariadb-client \
     libmariadb-dev \
@@ -11,18 +13,30 @@ RUN apt-get update && apt-get install -y \
     mysqli \
     pdo_mysql \
     zip \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/* 
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Copy custom PHP configuration file
+COPY ./config/php.ini /usr/local/etc/php/conf.d/custom.ini
 
-# COPY ./public /var/www/public
-# COPY ./app /var/www/public/app
-# COPY ./core /var/www/public/core
+# Copy application files
+COPY app /var/www/app
+COPY config /var/www/config
+COPY routes /var/www/routes
+COPY public /var/www/public
+COPY views /var/www/views
+
+COPY composer.json /var/www/composer.json
+
+WORKDIR /var/www
+
+RUN composer install 
+RUN composer require symfony/routing
+RUN composer require symfony/http-foundation
 
 WORKDIR /var/www/public
 
-# Expose the default PHP-FPM port
 EXPOSE 9000
 
-# Start PHP-FPM server
 CMD ["php-fpm"]
