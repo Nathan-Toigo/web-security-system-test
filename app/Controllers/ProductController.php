@@ -13,6 +13,6 @@ class ProductController
         $product = new Product();
         $product->read($id);
 
-        require_once APP_ROOT . '/views/product.php';
+        require_once APP_ROOT . '/app/Views/product.php';
 	}
 }

@@ -25,7 +25,6 @@ COPY app /var/www/app
 COPY config /var/www/config
 COPY routes /var/www/routes
 COPY public /var/www/public
-COPY views /var/www/views
 
 COPY composer.json /var/www/composer.json
 

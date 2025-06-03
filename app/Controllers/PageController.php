@@ -12,6 +12,6 @@ class PageController
 	{
 		$routeToProduct = str_replace('{id}', 1, $routes->get('product')->getPath());
 
-        require_once APP_ROOT . '/views/home.php';
+        require_once APP_ROOT . '/app/Views/home.php';
 	}
 }
