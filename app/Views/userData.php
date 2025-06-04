@@ -16,11 +16,21 @@
 
 	<main>
 		<h1>Status :</h1>
-		<ul>
-            <li><?php echo $user->getLastName(); ?> <?php echo $user->getFirstName(); ?></li>
-            <li><?php echo $user->getEmail(); ?></li>
-            <li><?php echo $user->getAddress(); ?></li>
-		</ul>
+		<?php
+    use App\Models\User;
+    if (isset($baba) && $baba instanceof User) {
+        echo '<div class="alert alert-info">';
+        echo '<h4>User Information</h4>';
+        echo '<strong>Id:</strong> ' . htmlspecialchars($user->getId()) . '<br>';
+        echo '<strong>First Name:</strong> ' . htmlspecialchars($user->getFirstName()) . '<br>';
+        echo '<strong>Last Name:</strong> ' . htmlspecialchars($user->getLastName()) . '<br>';
+        echo '<strong>Email:</strong> ' . htmlspecialchars($user->getEmail()) . '<br>';
+        echo '<strong>Address:</strong> ' . htmlspecialchars($user->getAddress()) . '<br>';
+        echo '<strong>Address:</strong> ' . htmlspecialchars($user->getPassword()) . '<br>';
+        echo '</div>';
+    }
+    
+    ?>
         <a href="<?php echo $routes->get('homepage')->getPath(); ?>">Back to homepage</a>
 	<main>
 </body>

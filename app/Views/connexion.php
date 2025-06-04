@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
 	<section>
 		<h1>Homepage</h1>
         <form method="post" action="">
