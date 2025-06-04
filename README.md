@@ -18,6 +18,20 @@ For each of these vulnerabilities, I plan to create a webpage containing:
 - A detailed explanation of the vulnerability  
 - One or more solutions to mitigate the attack
 
+## Setup
+
+Simply run 
+```bash 
+docker compose up --build
+```
+
+3 VM will start : 
+- Ngnix
+- PHP
+- MariaDB
+
+The webpage is hosted on localhost on port 8080.
+
 ## Tech
 
 <div align="center">
