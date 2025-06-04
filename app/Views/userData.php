@@ -18,7 +18,7 @@
 		<h1>Status :</h1>
 		<?php
     use App\Models\User;
-    if (isset($baba) && $baba instanceof User) {
+    if (isset($user) && $user instanceof User) {
         echo '<div class="alert alert-info">';
         echo '<h4>User Information</h4>';
         echo '<strong>Id:</strong> ' . htmlspecialchars($user->getId()) . '<br>';

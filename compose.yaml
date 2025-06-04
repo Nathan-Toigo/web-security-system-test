@@ -15,6 +15,10 @@ services:
       context: ./
       dockerfile: dockerfile-php
     container_name: php
+    volumes:
+      - ./public:/var/www/public
+      - ./app:/var/www/app
+      - ./routes:/var/www/routes
     depends_on:
       - db
 

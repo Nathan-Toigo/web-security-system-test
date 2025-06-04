@@ -1,7 +1,6 @@
 # Use the official PHP image as the base image
 FROM php:8.2-fpm
 
-
 WORKDIR /var/www/public
 
 RUN apt-get update && apt-get install -y \
@@ -33,6 +32,8 @@ WORKDIR /var/www
 RUN composer install 
 RUN composer require symfony/routing
 RUN composer require symfony/http-foundation
+RUN composer require symfony/form
+RUN composer require symfony/framework-bundle
 
 WORKDIR /var/www/public
 

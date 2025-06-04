@@ -4,22 +4,26 @@ namespace App\Controllers;
 
 use App\Models\UserPDO;
 use Symfony\Component\Routing\RouteCollection;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use PDO;
 
-class ConnexionController
+class ConnexionController extends AbstractController
 {
-    // Show the product attributes based on the id.
-	public function showAction(RouteCollection $routes)
+	public function showAction(RouteCollection $routes) 
 	{
 		$pdo = new PDO(constant('DB_DSN'),constant('DB_USER'), constant('DB_PASS'));
 		$userPDO = new UserPDO($pdo);
+		$user = $userPDO->findById(1);
 		
+		if(isset($submit)){
+
+		}
 
 		//try the password
 
-		//if good, redirect to userData with user data
+		//if good, redirect to userData
 		//else, print connexion with error message
 
-        require_once APP_ROOT . '/app/Views/connexion.php';
+        require_once APP_ROOT . '/app/Views/userData.php';
 	}
 }
