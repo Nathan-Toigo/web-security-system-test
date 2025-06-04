@@ -8,19 +8,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.png">
-    <title>Simple PHP MVC</title>
+    <title>Me</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
 
-	<section>
-		<h1>Homepage</h1>
-		<p>
-            <a href="<?php echo $routeToConnexion ?>">Log in here</a>
-        </p>
-	<section>
-
+	<main>
+		<h1>Status :</h1>
+		<ul>
+            <li><?php echo $user->getLastName(); ?> <?php echo $user->getFirstName(); ?></li>
+            <li><?php echo $user->getEmail(); ?></li>
+            <li><?php echo $user->getAddress(); ?></li>
+		</ul>
+        <a href="<?php echo $routes->get('homepage')->getPath(); ?>">Back to homepage</a>
+	<main>
 </body>
 
 </html>
