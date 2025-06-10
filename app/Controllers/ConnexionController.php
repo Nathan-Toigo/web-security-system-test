@@ -7,9 +7,9 @@ use Symfony\Component\Routing\RouteCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use PDO;
 
-class ConnexionController extends AbstractController
+class ConnexionController
 {
-	public function showAction(RouteCollection $routes) 
+	public function show(RouteCollection $routes) 
 	{
 		$pdo = new PDO(constant('DB_DSN'),constant('DB_USER'), constant('DB_PASS'));
 		$userPDO = new UserPDO($pdo);

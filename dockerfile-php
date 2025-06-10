@@ -35,6 +35,8 @@ RUN composer require symfony/http-foundation
 RUN composer require symfony/form
 RUN composer require symfony/framework-bundle
 
+RUN composer require symfony/twig-bundle
+
 WORKDIR /var/www/public
 
 EXPOSE 9000
