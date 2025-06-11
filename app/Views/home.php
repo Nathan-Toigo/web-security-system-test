@@ -18,6 +18,8 @@
 		<h1>Home Page</h1>
 		<p>
             <a href="<?php echo $routeToConnexion ?>">Log in here</a>
+            <br>
+            <a href="<?php echo $routeToForum ?>">See the forum here</a>
         </p>
 	<section>
 

@@ -31,7 +31,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: userpassword
     volumes:
-      - ./db/userInit.sql:/docker-entrypoint-initdb.d/initfile.sql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/initfile.sql
     expose:
       - "3306"
 

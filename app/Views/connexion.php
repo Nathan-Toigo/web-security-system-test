@@ -32,6 +32,7 @@
         <div class="alert alert-info">
             <?php echo $errorMessage ?? ''; ?>
         </div>
+        <a href="<?php echo $routes->get('homepage')->getPath(); ?>">Back to home</a>
 	<section>
 </body>
 
