@@ -10,13 +10,52 @@ Here are some vulnerabilities I would like to address:
 - SQL Injection  
 - Cross-Site Scripting (XSS)  
 - OS Command Injection  
-- Directory Traversal  
+- Directory Traversal
 - Cross-Site Request Forgery (CSRF)
 
 For each of these vulnerabilities, I plan to create a webpage containing:
 - A mock website vulnerable to the attack  
 - A detailed explanation of the vulnerability  
 - One or more solutions to mitigate the attack
+
+<table>
+	<tr>
+		<td></td>
+		<td>Testing With Vulnerability</td>
+		<td>Testing With Vulnerability Fixed</td>
+		<td>Explanation</td>
+  	</tr>
+	<tr>
+		<td>SQLi</td>
+		<td align="center">✅</td>
+		<td align="center">✅</td>
+		<td align="center">❌</td>
+  	</tr>
+	<tr>
+		<td>XSS</td>
+		<td align="center">✅</td>
+		<td align="center">❌</td>
+		<td align="center">❌</td>
+  	</tr>
+	<tr>
+		<td>OSCI</td>
+		<td align="center">❌</td>
+		<td align="center">❌</td>
+		<td align="center">❌</td>
+  	</tr>
+	<tr>
+		<td>DT</td>
+		<td align="center">❌</td>
+		<td align="center">❌</td>
+		<td align="center">❌</td>
+  	</tr>
+	<tr>
+		<td>CSRF</td>
+		<td align="center">❌</td>
+		<td align="center">❌</td>
+		<td align="center">❌</td>
+  	</tr>
+</table>
 
 ## Setup
 
