@@ -8,28 +8,30 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.png">
-    <title>Simple PHP MVC</title>
+    <title>Web Security System Testing</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
 	<section>
-		<h1>Homepage</h1>
-        <form method="post" action="../Controllers/ConnexionController.php">
-            <div class="form-group">
-            <label for="firstname">First Name</label>
-            <input type="text" class="form-control" id="firstname" name="firstname" required>
+		<h1>Connexion Page</h1>
+        <form method="post" action="/connexion">
+            <div class="custom-control custom-switch mb-3">
+                <input type="checkbox" class="custom-control-input" id="safe" name="safe" <?php if (isset($_POST['safe'])) echo 'checked'; ?>>
+                <label class="custom-control-label" for="safe">Safe request</label>
             </div>
             <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" id="lastname" name="lastname" required>
-            </div>
+            <label for="firstname">Email</label>
+            <input type="text" class="form-control" id="email" name="email" required>
             <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <div class="alert alert-info">
+            <?php echo $errorMessage ?? ''; ?>
+        </div>
 	<section>
 </body>
 

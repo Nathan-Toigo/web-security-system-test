@@ -4,7 +4,7 @@ namespace App\Models;
 
 use PDO;
 
-class UserPDO
+class SafeUserPDO
 {
     protected $pdo;
 
@@ -77,4 +77,14 @@ class UserPDO
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return array_map(fn($row) => new User($row), $rows);
     }
+
+    public function testUserPassword($email, $password)
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM User WHERE email = :email AND password = :password');
+        $stmt->execute(['email' => $email,'password' => $password]);
+        $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $data ? new User($data) : null;
+    }
+
+    
 }

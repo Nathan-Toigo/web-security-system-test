@@ -90,32 +90,8 @@ class User
 	}
 	
 
-    // CRUD OPERATIONS
-	public function create(array $data)
+	public function __toString()
 	{
-		
-	}
-	
-	public function read(int $id)
-	{
-		// Mock user data
-		$this->id = $id;
-		$this->firstname = "John";
-		$this->lastname = "Doe";
-		$this->email = "john.doe@example.com";
-		$this->password = "hashed_password";
-		$this->address = "123 Main St, City, Country";
-
-		return $this;
-	}
-	
-	public function update(int $id, array $data)
-	{
-		
-	}
-	
-	public function delete(int $id)
-	{
-		
+		return "User: {$this->firstname} {$this->lastname}, Email: {$this->email}, Address: {$this->address}";
 	}
 }

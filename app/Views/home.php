@@ -8,14 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.png">
-    <title>Simple PHP MVC</title>
+    <title>Web Security System Testing</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
 
 	<section>
-		<h1>Homepage</h1>
+		<h1>Home Page</h1>
 		<p>
             <a href="<?php echo $routeToConnexion ?>">Log in here</a>
         </p>
