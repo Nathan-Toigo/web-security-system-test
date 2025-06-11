@@ -44,6 +44,8 @@ The webpage is hosted on localhost on port 8080.
 		</tr>
 		<tr>
 			<td><img width="200" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/figma.png" alt="Figma" title="Figma"/></td>
+			<td><img width="200" src="https://symfony.com/logos/symfony_black_03.png" alt="Symfony" title="Symfony"/></td>
+
 		</tr>
 	</table>
 </div>

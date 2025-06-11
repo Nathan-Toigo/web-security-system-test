@@ -8,7 +8,8 @@ define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
 
 //DB Params
-define('DB_HOST', 'your-host');
-define('DB_USER', 'your-username');
-define('DB_PASS', 'your-password');
-define('DB_NAME', 'your-db-name');
+define('DB_HOST', 'db');
+define('DB_USER', 'user');
+define('DB_PASS', 'userpassword');
+define('DB_NAME', 'myapp');
+define('DB_DSN', 'mysql:host=db;dbname=myapp;charset=utf8mb4');

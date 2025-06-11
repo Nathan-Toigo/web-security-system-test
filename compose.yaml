@@ -13,8 +13,12 @@ services:
   php:
     build:
       context: ./
-      dockerfile: Dockerfile_PHP
+      dockerfile: dockerfile-php
     container_name: php
+    volumes:
+      - ./public:/var/www/public
+      - ./app:/var/www/app
+      - ./routes:/var/www/routes
     depends_on:
       - db
 
@@ -26,6 +30,10 @@ services:
       MYSQL_DATABASE: myapp
       MYSQL_USER: user
       MYSQL_PASSWORD: userpassword
+    volumes:
+      - ./db/userInit.sql:/docker-entrypoint-initdb.d/initfile.sql
+    expose:
+      - "3306"
 
 volumes:
   db_data:

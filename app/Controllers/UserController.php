@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Product;
+use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
 
 class ProductController
@@ -10,9 +10,9 @@ class ProductController
     // Show the product attributes based on the id.
 	public function showAction(int $id, RouteCollection $routes)
 	{
-        $product = new Product();
-        $product->read($id);
+        $user = new User();
+        $user->read($id);
 
-        require_once APP_ROOT . '/app/Views/product.php';
+        require_once APP_ROOT . '/app/Views/userData.php';
 	}
 }
