@@ -29,9 +29,12 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <div class="alert alert-info">
-            <?php echo $errorMessage ?? ''; ?>
-        </div>
+        <?php if (isset($errorMessage)): ?>
+            <div class="alert alert-danger">
+                <?php echo $errorMessage; ?>
+            </div>
+        <?php endif; ?>
+        <a href="<?php echo $routes->get('homepage')->getPath(); ?>">Back to home</a>
 	<section>
 </body>
 
