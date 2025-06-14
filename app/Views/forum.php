@@ -16,6 +16,23 @@
 
 	<section>
 		<h1>Forum Page</h1>
+
+        <form class="form-inline" method="post" action="/forum">
+            <div class="form-group custom-switch mx-sm-3 mb-2">
+                <input type="checkbox" class="custom-control-input" id="safe" name="safe" <?php if (isset($_POST['safe'])) echo 'checked'; ?>>
+                <label class="custom-control-label" for="safe">Safe request</label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="firstname">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="password">Content</label>
+                <input type="text" class="form-control" id="content" name="content" required>
+            </div>
+            <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Submit</button>
+        </form>
+        
 		<p>
             <?php
                 foreach ($posts as $post): 
@@ -28,6 +45,12 @@
                 </div>';
                 endforeach; ?>
         </p>
+        
+        <?php if (isset($errorMessage)): ?>
+            <div class="alert alert-danger">
+                <?php echo $errorMessage; ?>
+            </div>
+        <?php endif; ?>
         <a href="<?php echo $routes->get('homepage')->getPath(); ?>">Back to home</a>
 	<section>
 

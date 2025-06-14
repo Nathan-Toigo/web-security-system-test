@@ -25,18 +25,20 @@ class VulnerablePostPDO
 
     public function create($data)
     {
-        
+        try{
+            $title = $data['title'];
+            $content = $data['content'];
+            $creator_id = $data['creator_id'];
+
+            $sql = "INSERT INTO Post (title, content, creator_id, created_at) VALUES ('".$title."', '" .$content."', $creator_id, NOW())";
+            $this->pdo->exec($sql);
+            return true;
+        } catch (\PDOException $e) {
+            // Handle exception
+            return false;
+        }
     }
 
-    public function update($id, $data)
-    {
-
-    }
-
-    public function delete($id)
-    {
-
-    }
 
     public function getAll()
     {   
