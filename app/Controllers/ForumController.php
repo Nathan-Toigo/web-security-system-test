@@ -18,13 +18,20 @@ class ForumController
 		$postPDO = new VulnerablePostPDO($pdo);
 
 		if(isset($_POST['title']) && isset($_POST['content'])) {
-			if(!$postPDO->create([
+			try{
+				$postPDO->create([
 				'title' => $_POST['title'],
 				'content' => $_POST['content'],
-				'creator_id' => 1])){
-				$errorMessage = "An error occurred while creating the post.";
+				'creator_id' => 1]);
+			}
+			catch (\PDOException $e) {
+				$errorMessage = 'Error creating post: ' . $e->getMessage();
 			}
 		}
+
+		setcookie('importantInformation', "Session token",time() + 3600, "/");
+		setcookie('importantInformationSafe',"Session token Safe",['samesite' => 'Strict', 'secure' => true, 'httponly' => true, 'expires' => time() + 3600, 'path' => '/']);
+
 
 		$posts = $postPDO->getAll();
 

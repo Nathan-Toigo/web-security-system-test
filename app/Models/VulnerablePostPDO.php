@@ -35,7 +35,7 @@ class VulnerablePostPDO
             return true;
         } catch (\PDOException $e) {
             // Handle exception
-            return false;
+            throw $e;
         }
     }
 

@@ -21,11 +21,11 @@
                 <label class="custom-control-label" for="safe">Safe request</label>
             </div>
             <div class="form-group">
-            <label for="firstname">Email</label>
-            <input type="text" class="form-control" id="email" name="email" required>
-            <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+                <label for="firstname">Email</label>
+                <input type="text" class="form-control" id="email" name="email" required>
+                <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
