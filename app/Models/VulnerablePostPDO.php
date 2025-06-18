@@ -34,7 +34,6 @@ class VulnerablePostPDO
             $this->pdo->exec($sql);
             return true;
         } catch (\PDOException $e) {
-            // Handle exception
             throw $e;
         }
     }

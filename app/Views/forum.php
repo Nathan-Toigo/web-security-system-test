@@ -19,8 +19,8 @@
 
         <form class="form-inline" method="post" action="/forum">
             <div class="form-group custom-switch mx-sm-3 mb-2">
-                <input type="checkbox" class="custom-control-input" id="safe" name="safe" <?php if (isset($_POST['safe'])) echo 'checked'; ?>>
-                <label class="custom-control-label" for="safe">Safe request</label>
+                <input type="checkbox" class="custom-control-input" id="safePost" name="safePost" <?php if (isset($_POST['safe'])) echo 'checked'; ?>>
+                <label class="custom-control-label" for="safePost">Safe post request</label>
             </div>
             <div class="form-group mx-sm-3 mb-2">
                 <label for="firstname">Title</label>
@@ -32,7 +32,14 @@
             </div>
             <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Submit</button>
         </form>
-        
+
+        <form class="form-inline" method="post" action="/forum">
+            <div class="form-group custom-switch mx-sm-3 mb-2">
+                <input type="checkbox" class="custom-control-input" id="safeDisplay" name="safeDisplay" <?php if (isset($_POST['safeDisplay'])) echo 'checked'; ?>>
+                <label class="custom-control-label" for="safeDisplay">Safe display request</label>
+            </div>
+            <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Refresh</button>
+        </form>
 		<p>
             <?php
                 foreach ($posts as $post): 
