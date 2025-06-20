@@ -35,6 +35,22 @@
 
         <form class="form-inline" method="post" action="/forum">
             <div class="form-group custom-switch mx-sm-3 mb-2">
+                <input type="checkbox" class="custom-control-input" id="safeCookie" name="safeCookie" <?php if (isset($_POST['safeCookie'])) echo 'checked'; ?>>
+                <label class="custom-control-label" for="safeCookie">Safe Cookie</label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="nameCookie">Cookie name</label>
+                <input type="text" class="form-control" id="nameCookie" name="nameCookie" required>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="valueCookie">Cookie value</label>
+                <input type="text" class="form-control" id="valueCookie" name="valueCookie" required>
+            </div>
+            <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Set cookie</button>
+        </form>
+
+        <form class="form-inline" method="post" action="/forum">
+            <div class="form-group custom-switch mx-sm-3 mb-2">
                 <input type="checkbox" class="custom-control-input" id="safeDisplay" name="safeDisplay" <?php if (isset($_POST['safeDisplay'])) echo 'checked'; ?>>
                 <label class="custom-control-label" for="safeDisplay">Safe display request</label>
             </div>

@@ -29,7 +29,20 @@ class ForumController
 			$safeDisplay = false;
 		}
 
-		
+		if (isset($_POST['safeCookie'])) {
+			$safeCookie = $_POST['safeCookie'];
+		} else {
+			$safeCookie = false;
+		}
+
+		if (isset($_POST['nameCookie']) && isset($_POST['valueCookie'])) {
+			if($safeCookie) {
+				setcookie($_POST['nameCookie'],$_POST['valueCookie'],['samesite' => 'Strict', 'secure' => true, 'httponly' => true, 'expires' => time() + 3600, 'path' => '/']);
+			} else {
+				setcookie($_POST['nameCookie'],$_POST['valueCookie'],time() + 3600, "/");
+			}
+		}
+
 
 		if(isset($_POST['title']) && isset($_POST['content']) && !empty($_POST['title']) && !empty($_POST['content'])) {
 			try{		
@@ -59,10 +72,6 @@ class ForumController
 				$errorMessage = 'Error creating post: ' . $e->getMessage();
 			}
 		}
-
-		setcookie('importantInformation', "Session token",time() + 3600, "/");
-		setcookie('importantInformationSafe',"Session token Safe",['samesite' => 'Strict', 'secure' => true, 'httponly' => true, 'expires' => time() + 3600, 'path' => '/']);
-
 
 		if ($safeDisplay) {
 			$displayPDO = new SafePostPDO($pdo);

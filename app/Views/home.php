@@ -17,9 +17,9 @@
 	<section>
 		<h1>Home Page</h1>
 		<p>
-            <a href="<?php echo $routeToConnexion ?>">Log in here</a>
+            <a href="<?php echo $routeToConnexion ?>">Log in here (SQL Injection Vulnerability)</a>
             <br>
-            <a href="<?php echo $routeToForum ?>">See the forum here</a>
+            <a href="<?php echo $routeToForum ?>">See the forum here (XSS Vulnerability)</a>
         </p>
 	<section>
 
