@@ -34,7 +34,7 @@ For each of these vulnerabilities, I plan to create a webpage containing:
 	<tr>
 		<td>XSS</td>
 		<td align="center">✅</td>
-		<td align="center">❌</td>
+		<td align="center">✅</td>
 		<td align="center">❌</td>
   	</tr>
 	<tr>
