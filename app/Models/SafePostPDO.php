@@ -15,75 +15,50 @@ class SafePostPDO
 
     public function findById($id)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM User WHERE id = :id');
-        $stmt->execute(['id' => $id]);
-        $data = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $data ? new User($data) : null;
+        
     }
 
     public function findByEmail($email)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM User WHERE email = :email');
-        $stmt->execute(['email' => $email]);
-        $data = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $data ? new User($data) : null;
+
     }
 
     public function create($data)
     {
-        $stmt = $this->pdo->prepare(
-            'INSERT INTO User (name, email, password) VALUES (:name, :email, :password)'
-        );
-        $success = $stmt->execute([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => $data['password'],
-        ]);
-        if ($success) {
-            $id = $this->pdo->lastInsertId();
-            return $this->findById($id);
+        try{
+            $title = $data['title'];
+            $content = $data['content'];
+            $creator_id = $data['creator_id'];
+
+            $stmt = $this->pdo->prepare('INSERT INTO Post (title, content, creator_id, created_at) VALUES (:title, :content, :creator_id, NOW())');
+            $success = $stmt->execute(['title' => $title,'content' => $content, 'creator_id' => $creator_id]);
+            return true;
+        } catch (\PDOException $e) {
+            throw $e;
         }
-        return null;
     }
 
-    public function update($id, $data)
-    {
-        $stmt = $this->pdo->prepare(
-            'UPDATE User SET name = :name, email = :email, password = :password WHERE id = :id'
-        );
-        $success = $stmt->execute([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => $data['password'],
-            'id'       => $id,
-        ]);
-        if ($success) {
-            return $this->findById($id);
-        }
-        return null;
-    }
-
-    public function delete($id)
-    {
-        $user = $this->findById($id);
-        $stmt = $this->pdo->prepare('DELETE FROM User WHERE id = :id');
-        $success = $stmt->execute(['id' => $id]);
-        return $success ? $user : null;
-    }
 
     public function getAll()
     {   
-        $stmt = $this->pdo->query('SELECT * FROM User');
+        $stmt = $this->pdo->prepare('SELECT * FROM Post JOIN User ON Post.creator_id = User.id ORDER BY Post.created_at DESC');
+        $stmt->execute();
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        return array_map(fn($row) => new User($row), $rows);
+        return array_map(function($row) {
+            // Sanitize title and content
+            if (isset($row['title'])) {
+            $row['title'] = strip_tags($row['title']);
+            }
+            if (isset($row['content'])) {
+            $row['content'] = strip_tags($row['content']);
+            }
+            return new Post($row);
+        }, $rows);
     }
 
     public function testUserPassword($email, $password)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM User WHERE email = :email AND password = :password');
-        $stmt->execute(['email' => $email,'password' => $password]);
-        $data = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $data ? new User($data) : null;
+
     }
 
     
