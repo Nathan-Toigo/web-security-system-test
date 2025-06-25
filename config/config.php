@@ -1,6 +1,6 @@
 <?php
 //site name
-define('SITE_NAME', 'your-site-name');
+define('SITE_NAME', 'http://localhost:8080');
 
 //App Root
 define('APP_ROOT', dirname(dirname(__FILE__)));
