@@ -35,7 +35,7 @@ class ArchiveController
 			}
 		} catch (\Exception $e) {
 			// Handle the exception, e.g., log it or show an error message
-			$loadedDocument = "Error loading document: " . $e->getMessage();
+			$loadedDocument = "<div class='alert alert-danger'> Error loading document : File not found </div>";
 		}
 		
 

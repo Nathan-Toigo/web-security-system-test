@@ -38,13 +38,13 @@ For each of these vulnerabilities, I plan to create a webpage containing:
 		<td align="center">❌</td>
   	</tr>
 	<tr>
-		<td>OSCI</td>
-		<td align="center">❌</td>
-		<td align="center">❌</td>
+		<td>DT</td>
+		<td align="center">✅</td>
+		<td align="center">✅</td>
 		<td align="center">❌</td>
   	</tr>
 	<tr>
-		<td>DT</td>
+		<td>OSCI</td>
 		<td align="center">❌</td>
 		<td align="center">❌</td>
 		<td align="center">❌</td>
