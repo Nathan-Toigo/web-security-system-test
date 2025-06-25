@@ -14,7 +14,8 @@ class HomeController
 	{
 		$routeToConnexion = $routes->get('connexion')->getPath();
 		$routeToForum = $routes->get('forum')->getPath();
-        require_once APP_ROOT . '/app/Views/home.php';
+		$routeToGalery = '/archive?path=Document1.txt'; // Default image if none is specified
+        require_once APP_ROOT . '/app/Views/home.php';	
 	}
 	
 }

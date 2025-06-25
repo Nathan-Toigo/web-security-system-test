@@ -1,0 +1,10 @@
+This is a mock document for testing purposes.
+
+Title: Sample Document 2
+
+Content:
+- This document is used as a placeholder.
+- You can replace this text with your actual content.
+- Created for web security system test.
+
+End of document.

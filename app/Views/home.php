@@ -20,6 +20,9 @@
             <a href="<?php echo $routeToConnexion ?>">Log in here (SQL Injection Vulnerability)</a>
             <br>
             <a href="<?php echo $routeToForum ?>">See the forum here (XSS Vulnerability)</a>
+            <br>
+            <a href="<?php echo $routeToGalery ?>">See the galery (DT Vulnerability)</a>
+            <br>
         </p>
 	<section>
 
