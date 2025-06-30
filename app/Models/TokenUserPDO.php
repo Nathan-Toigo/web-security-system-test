@@ -13,11 +13,6 @@ class TokenUserPDO
         $this->pdo = $pdo;
     }
 
-    public function findByEmail($email)
-    {
-
-    }
-
     public function findByToken($token)
     {
         $stmt = $this->pdo->prepare('SELECT * FROM TokenUser JOIN User ON TokenUser.user_id = User.id WHERE token = :token');

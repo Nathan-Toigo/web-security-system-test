@@ -6,7 +6,9 @@
 </head>
 <body>
     <ul>
-        <li><a href="./CSRF/csrf.php">CSRF</a></li>
+        <?php
+        require_once './CSRF/csrf.php';
+        ?>
         <li><a href="./DT/dt.php">DT</a></li>
     </ul>
 </body>

@@ -32,8 +32,8 @@ class ConnexionController
 			
 			$user = $userPDO->findByToken($_COOKIE['userToken']);
 			if ($user !== null) {
-				require_once APP_ROOT . '/app/Views/userData.php';
-				return;
+				header('Location: ' . constant('URL_SUBFOLDER') . '/user');
+				exit();
 			}
 		}
 		
@@ -53,7 +53,8 @@ class ConnexionController
 				//add token in cookie
 				setcookie('userToken', $token, time() + 86400, '/'); // Cookie expires in 1 day
 
-				require_once APP_ROOT . '/app/Views/userData.php';
+				header('Location: ' . constant('URL_SUBFOLDER') . '/user');
+				exit();
 			}
 			else{
 				//else, print connexion with error message

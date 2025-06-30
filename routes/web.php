@@ -9,5 +9,8 @@ $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('contr
 $routes->add('connexion', new Route(constant('URL_SUBFOLDER') . '/connexion', array('controller' => 'ConnexionController', 'method'=>'show')));
 $routes->add('forum', new Route(constant('URL_SUBFOLDER') . '/forum', array('controller' => 'ForumController', 'method'=>'show')));
 $routes->add('archive', new Route(constant('URL_SUBFOLDER') . '/archive', array('controller' => 'ArchiveController', 'method'=>'show')));
-$routes->add('account_settings', new Route(constant('URL_SUBFOLDER') . '/account-settings', array('controller' => 'AccountSettingsController', 'method'=>'show')));
 $routes->add('logout', new Route(constant('URL_SUBFOLDER') . '/logout', array('controller' => 'ConnexionController', 'method'=>'logout')));
+
+$routes->add('user_settings_email', new Route(constant('URL_SUBFOLDER') . '/user/settings/update-email', array('controller' => 'UserController', 'method'=>'updateEmail')));
+$routes->add('user', new Route(constant('URL_SUBFOLDER') . '/user', array('controller' => 'UserController', 'method'=>'show')));
+$routes->add('user_settings', new Route(constant('URL_SUBFOLDER') . '/user/settings', array('controller' => 'UserController', 'method'=>'showSettings')));
