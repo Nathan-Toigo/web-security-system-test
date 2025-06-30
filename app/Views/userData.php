@@ -29,7 +29,9 @@
             echo '</div>';
             }
         ?>
-        <a href="<?php echo $routes->get('connexion')->getPath(); ?>">Back to connexion</a>
+        
+        <a href="<?php echo $routes->get('logout')->getPath(); ?>">Disconnect</a> </br>
+        <a href="<?php echo $routes->get('homepage')->getPath(); ?>">Back to homepage</a>
 	<main>
 </body>
 

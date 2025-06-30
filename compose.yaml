@@ -53,7 +53,7 @@ services:
       dockerfile: dockerfile-mock-php
     container_name: php-mock
     volumes:
-      - ./mock-public:/var/www/public
+      - ./attack-web/public:/var/www/public
     ports:
       - "9001:9000"
 
