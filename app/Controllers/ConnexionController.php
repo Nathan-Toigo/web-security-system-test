@@ -15,22 +15,22 @@ class ConnexionController
 {
 	public function show(RouteCollection $routes) 
 	{
-		
-		if (isset($_POST['safe'])) {
-			$safe = $_POST['safe'];
+
+		if (isset($_POST['safeConnection'])) {
+			$safeConnection = $_POST['safeConnection'];
 		}
 		else{
-			$safe = false;
+			$safeConnection = false;
 		}
 
 		$pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
 
 		//check cookie
-		if (isset($_COOKIE['userToken'])) {
+		if (isset($_SESSION['userToken'])) {
 			
 			$userPDO = new TokenUserPDO($pdo);
 			
-			$user = $userPDO->findByToken($_COOKIE['userToken']);
+			$user = $userPDO->findByToken($_SESSION['userToken']);
 			if ($user !== null) {
 				header('Location: ' . constant('URL_SUBFOLDER') . '/user');
 				exit();
@@ -38,7 +38,7 @@ class ConnexionController
 		}
 		
 		if(isset($_POST["email"]) && isset($_POST["password"])){
-			if($safe){
+			if($safeConnection){
 				$userPDO = new SafeUserPDO($pdo);
 			}
 			else{
@@ -47,11 +47,14 @@ class ConnexionController
 			$user = $userPDO->testUserPassword($_POST["email"], $_POST["password"]);
 			if($user !== null){
 				//add token in database
-				$token = bin2hex(random_bytes(16)); // Generate a secure random token
+				$userToken = bin2hex(random_bytes(16)); // Generate a secure random token
 				$expiresAt = date('Y-m-d H:i:s', strtotime('+1 day')); // Token expires in 1 hour
-				$userPDO->addTokenToUser($user->getId(), $token, $expiresAt);
-				//add token in cookie
-				setcookie('userToken', $token, time() + 86400, '/'); // Cookie expires in 1 day
+				$userPDO->addTokenToUser($user->getId(), $userToken, $expiresAt);
+
+				$_SESSION['userToken'] = $userToken; // Store the token in the session
+
+				$csrfToken = bin2hex(random_bytes(16));
+				$_SESSION['csrfToken'] = $csrfToken; 
 
 				header('Location: ' . constant('URL_SUBFOLDER') . '/user');
 				exit();
@@ -69,9 +72,7 @@ class ConnexionController
 
 	public function logout(RouteCollection $routes)
 	{
-		// Clear the cookie
-		setcookie('userToken', '', time() - 3600, '/'); // Expire the cookie immediately
-		// Redirect to the homepage or login page
+		session_destroy();
 		header('Location: ' . constant('URL_SUBFOLDER') . '/connexion');
 		exit();
 	}

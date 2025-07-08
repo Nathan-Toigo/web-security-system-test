@@ -15,11 +15,11 @@ class UserController
 	{
         $pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
 
-        if (isset($_COOKIE['userToken'])) {
+        if (isset($_SESSION['userToken'])) {
 			
 			$userPDO = new TokenUserPDO($pdo);
 			
-			$user = $userPDO->findByToken($_COOKIE['userToken']);
+			$user = $userPDO->findByToken($_SESSION['userToken']);
 			if ($user !== null) {
                 require_once APP_ROOT . '/app/Views/userProfile.php';
 			}
@@ -34,22 +34,48 @@ class UserController
         require_once APP_ROOT . '/app/Views/userSettings.php';
     }
 
-    public function updateEmail(RouteCollection $routes)
+    public function updateEmailSafe(RouteCollection $routes)
 	{
         $pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
 
-        if (isset($_POST['email']) && isset($_COOKIE['userToken'])) {
+        if (isset($_POST['email']) && isset($_SESSION['userToken']) && isset($_POST['csrfToken'])) {
+            if($_POST['csrfToken'] == $_SESSION['csrfToken']){
+
+                $email = $_POST['email'];
+                $token = $_SESSION['userToken'];
+
+                $userPDO = new UserPDO($pdo);
+
+                $userPDO->updateEmailByUserToken($token, $email);
+
+                header('Location: ' . $routes->get('user')->getPath());
+                echo "<script>alert('Email updated successfully!');</script>";
+                exit();
+            }
+            else {
+                echo "Invalid CSRF token.";
+            }
+
+        } else {
+            echo "Email, user token and csrf token are required.";
+        }
+	}
+
+    public function updateEmailVulnerable(RouteCollection $routes)
+	{
+        $pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
+
+        if (isset($_POST['email']) && isset($_SESSION['userToken'])) {
             $email = $_POST['email'];
-            $token = $_COOKIE['userToken'];
+            $token = $_SESSION['userToken'];
 
             $userPDO = new UserPDO($pdo);
 
-            $userPDO->updateEmailByToken($token, $email);
+            $userPDO->updateEmailByUserToken($token, $email);
 
             header('Location: ' . $routes->get('user')->getPath());
             echo "<script>alert('Email updated successfully!');</script>";
             exit();
-
 
         } else {
             echo "Email and token are required.";

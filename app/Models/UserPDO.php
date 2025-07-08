@@ -35,10 +35,25 @@ class UserPDO
         }
     }
 
-    public function updateEmailByToken($token, $newEmail)
+    public function updateEmailByUserToken($token, $newEmail)
     {
         try {
-            $sql = "UPDATE User SET email = :email WHERE id = (SELECT user_id FROM TokenUser WHERE token = :token)";
+            $sql = "UPDATE User SET email = :email WHERE id = (SELECT user_id FROM TokenUser WHERE token = :token AND expires_at > NOW())";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':email' => $newEmail,
+                ':token' => $token
+            ]);
+            return true;
+        } catch (\PDOException $e) {
+            throw $e;
+        }
+    }
+
+    public function updateEmailByRequestToken($token, $newEmail)
+    {
+        try {
+            $sql = "UPDATE User SET email = :email WHERE id = (SELECT user_id FROM TokenRequest WHERE token = :token AND expires_at > NOW())";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':email' => $newEmail,

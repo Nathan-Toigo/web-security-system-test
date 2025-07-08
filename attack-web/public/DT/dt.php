@@ -71,5 +71,8 @@ ob_end_flush();
         echo "Retrieved Information : <br>" . htmlspecialchars($_GET['param']);
     }
     ?>
+    <form action="../index.php">
+        <button type="submit">Home</button>
+    </form>
 </body>
 </html>

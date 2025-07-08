@@ -29,10 +29,11 @@
             echo '</div>';
             }
         ?>
-        <form class="form-inline" method="post" action="<?php echo $routes->get('user_settings_email')->getPath(); ?>">
+        <form class="form-inline" method="post" action="<?php echo $routes->get('user_settings_email_safe')->getPath(); ?>">
             <div class="form-group">
                 <label for="email">New Email address</label>
                 <input type="email" class="form-control" id="email" name="email" required>
+                <input type="hidden" name="csrfToken" value="<?php echo $_SESSION["csrfToken"]; ?>">
             </div>
             <button type="submit" class="btn btn-primary">Change Email</button>
         </form>
