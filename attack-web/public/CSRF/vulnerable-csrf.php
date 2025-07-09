@@ -1,7 +1,7 @@
 <?php
 
 $link = "http://localhost:8080/user/settings/update-email-vulnerable"; // The link to the vulnerable action
-$email = $_POST['email']; // The email to be sent, sanitized for security
+$email = $_GET['email']; // The email to be sent, sanitized for security
 
 ?>
 

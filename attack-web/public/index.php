@@ -6,18 +6,13 @@
 </head>
 <body>
     <ul>
-        <form action="/CSRF/vulnerable-csrf.php" method="POST">
-            <label for="email">Email to change:</label>
-            <input type="email" id="email" name="email" value="evil.email@mail.com">
-            <button type="submit">Vulnerable CSRF</button>
-        </form>
-        <form action="/CSRF/safe-csrf.php" method="POST">
-            <label for="email">Email to change:</label>
-            <input type="email" id="email" name="email" value="evil.email@mail.com">
-            <button type="submit">Safe CSRF</button>
-        </form>
-        <form action="/DT/dt.php" method="POST">
-            <button type="submit">DT</button>
+        <label for="email">Email to change:</label>
+        <input type="email" id="email" name="email" value="evil.email@mail.com">
+        <button type="button" onclick="navigator.clipboard.writeText('http://localhost:8081/CSRF/vulnerable-csrf.php?email=' + document.getElementById('email').value)">Copy hacking link (Vulnerable)</button>
+        <button type="button" onclick="navigator.clipboard.writeText('http://localhost:8081/CSRF/safe-csrf.php?email=' + document.getElementById('email').value)">Copy hacking link (Safe)</button>
+
+        <form action="/XSS/xss.php" method="POST">
+            <button type="submit">XSS</button>
         </form>
     </ul>
 </body>
