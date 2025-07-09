@@ -7,6 +7,24 @@ CREATE TABLE User (
     password VARCHAR(255)
 );
 
+CREATE TABLE TokenUser (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    token VARCHAR(255) UNIQUE,
+    created_at DATETIME,
+    expires_at DATETIME,
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+CREATE TABLE CSRFToken (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    token VARCHAR(255) UNIQUE,
+    created_at DATETIME,
+    expires_at DATETIME,
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
 CREATE TABLE Post (
     id INT PRIMARY KEY AUTO_INCREMENT,
     creator_id INT,

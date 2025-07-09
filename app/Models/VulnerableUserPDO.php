@@ -4,7 +4,7 @@ namespace App\Models;
 
 use PDO;
 
-class VulnerableUserPDO
+class VulnerableUserPDO extends UserPDO
 {
     protected $pdo;
 

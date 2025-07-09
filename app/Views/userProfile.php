@@ -15,7 +15,7 @@
 <body>
 
 	<main>
-		<h1>User Data Page</h1>
+		<h1>User Page</h1>
 		<?php
             use App\Models\User;
             if (isset($user) && $user instanceof User) {
@@ -29,7 +29,17 @@
             echo '</div>';
             }
         ?>
-        <a href="<?php echo $routes->get('connexion')->getPath(); ?>">Back to connexion</a>
+        <form class="form-inline" method="post" action="<?php echo $routes->get('user_settings_email_safe')->getPath(); ?>">
+            <div class="form-group">
+                <label for="email">New Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="hidden" name="csrfToken" value="<?php echo $_SESSION["csrfToken"]; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary">Change Email</button>
+        </form>
+
+        <a href="<?php echo $routes->get('logout')->getPath(); ?>">Disconnect</a> </br>
+        <a href="<?php echo $routes->get('homepage')->getPath(); ?>">Back to homepage</a>
 	<main>
 </body>
 

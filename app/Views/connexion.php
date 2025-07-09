@@ -17,8 +17,8 @@
 		<h1>Connexion Page</h1>
         <form method="post" action="/connexion">
             <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input" id="safe" name="safe" <?php if (isset($_POST['safe'])) echo 'checked'; ?>>
-                <label class="custom-control-label" for="safe">Safe request</label>
+                <input type="checkbox" class="custom-control-input" id="safeConnection" name="safeConnection" <?php if (isset($_POST['safeConnection'])) echo 'checked'; ?>>
+                <label class="custom-control-label" for="safeConnection">Safe connection (SQLi)</label>
             </div>
             <div class="form-group">
                 <label for="firstname">Email</label>

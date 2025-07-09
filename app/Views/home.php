@@ -21,7 +21,7 @@
             <br>
             <a href="<?php echo $routeToForum ?>">See the forum here (XSS Vulnerability)</a>
             <br>
-            <a href="<?php echo $routeToGalery ?>">See the galery (DT Vulnerability)</a>
+            <a href="<?php echo $routeToGalery ?>">See the archive (DT Vulnerability)</a>
             <br>
         </p>
 	<section>
