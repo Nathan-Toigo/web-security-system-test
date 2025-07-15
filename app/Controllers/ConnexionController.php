@@ -60,7 +60,6 @@ class ConnexionController
 				exit();
 			}
 			else{
-				//else, print connexion with error message
 				$errorMessage = "Invalid credentials. Please try again.";
 				require_once APP_ROOT . '/app/Views/connexion.php';
 			}
