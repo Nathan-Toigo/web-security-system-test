@@ -90,14 +90,13 @@ class ArchiveController
 			$escapedPath = escapeshellarg($path);
 			$escapedContent = escapeshellarg($content);
 
-			// Create the file using a shell command
-			$cmd = "echo $escapedContent > ./document/$escapedPath";
-			shell_exec($cmd);
-
-			// Insert document record into database
 			$pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
 			$archivePDO = new DocumentPDO($pdo);
 			$archivePDO->insertDocument(new Document(['path' => $document]));
+
+			// Create the file using a shell command
+			$cmd = "echo $escapedContent > ./document/$escapedPath";
+			shell_exec($cmd);
 
 			header('Location: ' . SITE_NAME . '/archive?path=' . urlencode($document) . '&safe=true');
 			exit;
@@ -107,18 +106,17 @@ class ArchiveController
 	public function postDocumentVulnerable(RouteCollection $routes) 
 	{
 		if (isset($_POST['filename']) && isset($_POST['content'])) {
-			$document = basename($_POST['filename']); // Prevent directory traversal
+			$document = $_POST['filename']; // Prevent directory traversal
 			$content = $_POST['content'];
 			$path = $document;
-
-			// Create the file using a shell command
-			$cmd = "echo $content > ./document/$path";
-			shell_exec($cmd);
 
 			// Insert document record into database
 			$pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
 			$archivePDO = new DocumentPDO($pdo);
 			$archivePDO->insertDocument(new Document(['path' => $document]));
+
+			$cmd = "echo $content > ./document/$path";
+			shell_exec($cmd);
 
 			header('Location: ' . SITE_NAME . '/archive?path=' . urlencode($document) . '&safe=true');
 			exit;
