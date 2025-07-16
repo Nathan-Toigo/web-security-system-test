@@ -91,7 +91,7 @@ class ArchiveController
 			$escapedContent = escapeshellarg($content);
 
 			// Create the file using a shell command
-			$cmd = "echo $content > ./document/$path";
+			$cmd = "echo $escapedContent > ./document/$escapedPath";
 			shell_exec($cmd);
 
 			// Insert document record into database
@@ -99,7 +99,7 @@ class ArchiveController
 			$archivePDO = new DocumentPDO($pdo);
 			$archivePDO->insertDocument(new Document(['path' => $document]));
 
-			header('Location: ' . SITE_NAME . '/archive');
+			header('Location: ' . SITE_NAME . '/archive?path=' . urlencode($document) . '&safe=true');
 			exit;
 		}
 	}
@@ -120,7 +120,7 @@ class ArchiveController
 			$archivePDO = new DocumentPDO($pdo);
 			$archivePDO->insertDocument(new Document(['path' => $document]));
 
-			header('Location: ' . SITE_NAME . '/archive');
+			header('Location: ' . SITE_NAME . '/archive?path=' . urlencode($document) . '&safe=true');
 			exit;
 		}
 	}
