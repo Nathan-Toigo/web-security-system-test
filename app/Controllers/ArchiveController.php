@@ -8,6 +8,7 @@ use Symfony\Component\Routing\RouteCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use App\Models\DocumentPDO;
+use App\Models\Document;
 use PDO;
 
 class ArchiveController 
@@ -76,5 +77,51 @@ class ArchiveController
 			throw new \Exception("File not found: " . $path);
 		}
         return nl2br(file_get_contents($path));
+	}
+
+	public function postDocumentSafe(RouteCollection $routes) 
+	{
+		if (isset($_POST['filename']) && isset($_POST['content'])) {
+			$document = basename($_POST['filename']); // Prevent directory traversal
+			$content = $_POST['content'];
+			$path = $document;
+
+			// Use escapeshellarg to safely pass arguments to shell
+			$escapedPath = escapeshellarg($path);
+			$escapedContent = escapeshellarg($content);
+
+			// Create the file using a shell command
+			$cmd = "echo $content > ./document/$path";
+			shell_exec($cmd);
+
+			// Insert document record into database
+			$pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
+			$archivePDO = new DocumentPDO($pdo);
+			$archivePDO->insertDocument(new Document(['path' => $document]));
+
+			header('Location: ' . SITE_NAME . '/archive');
+			exit;
+		}
+	}
+
+	public function postDocumentVulnerable(RouteCollection $routes) 
+	{
+		if (isset($_POST['filename']) && isset($_POST['content'])) {
+			$document = basename($_POST['filename']); // Prevent directory traversal
+			$content = $_POST['content'];
+			$path = $document;
+
+			// Create the file using a shell command
+			$cmd = "echo $content > ./document/$path";
+			shell_exec($cmd);
+
+			// Insert document record into database
+			$pdo = new PDO(constant('DB_DSN'), constant('DB_USER'), constant('DB_PASS'));
+			$archivePDO = new DocumentPDO($pdo);
+			$archivePDO->insertDocument(new Document(['path' => $document]));
+
+			header('Location: ' . SITE_NAME . '/archive');
+			exit;
+		}
 	}
 }
