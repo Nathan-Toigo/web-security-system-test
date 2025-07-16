@@ -26,6 +26,28 @@
             <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Refresh</button>
         </form>
 
+        <form class="form-inline" method="post" action="/archive/post-document-safe">
+            <div class="form-group mx-sm-3 mb-2">
+                <label class="custom-label" for="filename">Filename : </label>
+                <input type="textarea" class="form-control" id="filename" name="filename">
+
+                <label class="custom-label" for="content">Content : </label>
+                <input type="textarea" class="form-control" id="content" name="content">
+            </div>
+            <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Create document (safe)</button>
+        </form>
+
+        <form class="form-inline" method="post" action="/archive/post-document-vulnerable">
+            <div class="form-group mx-sm-3 mb-2">
+                <label class="custom-label" for="filename">Filename : </label>
+                <input type="textarea" class="form-control" id="filename" name="filename">
+
+                <label class="custom-label" for="content">Content : </label>
+                <input type="textarea" class="form-control" id="content" name="content">
+            </div>
+            <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Create document (vulnerable)</button>
+        </form>
+
         <div class="card my-4">
             <div class="card-body">
             <?php echo $loadedDocument; ?>

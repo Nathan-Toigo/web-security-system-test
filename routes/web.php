@@ -16,3 +16,6 @@ $routes->add('user_settings_email_vulnerable', new Route(constant('URL_SUBFOLDER
 
 $routes->add('user', new Route(constant('URL_SUBFOLDER') . '/user', array('controller' => 'UserController', 'method'=>'show')));
 $routes->add('user_settings', new Route(constant('URL_SUBFOLDER') . '/user/settings', array('controller' => 'UserController', 'method'=>'showSettings')));
+
+$routes->add('post_document_safe', new Route(constant('URL_SUBFOLDER') . '/archive/post-document-safe', array('controller' => 'ArchiveController', 'method'=>'postDocumentSafe')));
+$routes->add('post_document_vulnerable', new Route(constant('URL_SUBFOLDER') . '/archive/post-document-vulnerable', array('controller' => 'ArchiveController', 'method'=>'postDocumentVulnerable')));
