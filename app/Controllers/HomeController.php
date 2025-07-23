@@ -15,6 +15,13 @@ class HomeController
 		$routeToConnexion = $routes->get('connexion')->getPath();
 		$routeToForum = $routes->get('forum')->getPath();
 		$routeToGalery = '/archive?path=Document1.txt'; // Default image if none is specified
+
+		$routeToExplainationSQLI = $routes->get('explaination_sqli')->getPath();
+		$routeToExplainationXSS = $routes->get('explaination_xss')->getPath();
+		$routeToExplainationCSRF = $routes->get('explaination_csrf')->getPath();
+		$routeToExplainationOSCI = $routes->get('explaination_osci')->getPath();
+		$routeToExplainationDT = $routes->get('explaination_dt')->getPath();
+
         require_once APP_ROOT . '/app/Views/home.php';	
 	}
 	

@@ -17,11 +17,24 @@
 	<section>
 		<h1>Home Page</h1>
 		<p>
-            <a href="<?php echo $routeToConnexion ?>">Log in here (SQL Injection Vulnerability)</a>
+            <a href="<?php echo $routeToConnexion ?>">Log in here (SQLi, CSRF)</a>
             <br>
-            <a href="<?php echo $routeToForum ?>">See the forum here (XSS Vulnerability)</a>
+            <a href="<?php echo $routeToForum ?>">See the forum here (XSS)</a>
             <br>
-            <a href="<?php echo $routeToGalery ?>">See the archive (DT Vulnerability)</a>
+            <a href="<?php echo $routeToGalery ?>">See the archive (DT, OSCI)</a>
+            <br>
+        </p>
+
+        <p>
+            <a href="<?php echo $routeToExplainationSQLI ?>">SQLI Explanation</a>
+            <br>
+            <a href="<?php echo $routeToExplainationXSS ?>">XSS Explanation</a>
+            <br>
+            <a href="<?php echo $routeToExplainationCSRF ?>">CSRF Explanation</a>
+            <br>
+            <a href="<?php echo $routeToExplainationOSCI ?>">OSCI Explanation</a>
+            <br>
+            <a href="<?php echo $routeToExplainationDT ?>">DT Explanation</a>
             <br>
         </p>
 	<section>

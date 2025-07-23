@@ -19,3 +19,9 @@ $routes->add('user_settings', new Route(constant('URL_SUBFOLDER') . '/user/setti
 
 $routes->add('post_document_safe', new Route(constant('URL_SUBFOLDER') . '/archive/post-document-safe', array('controller' => 'ArchiveController', 'method'=>'postDocumentSafe')));
 $routes->add('post_document_vulnerable', new Route(constant('URL_SUBFOLDER') . '/archive/post-document-vulnerable', array('controller' => 'ArchiveController', 'method'=>'postDocumentVulnerable')));
+
+$routes->add('explaination_sqli', new Route(constant('URL_SUBFOLDER') . '/explaination/sqli', array('controller' => 'ExplainationController', 'method'=>'showSQLI')));
+$routes->add('explaination_xss', new Route(constant('URL_SUBFOLDER') . '/explaination/xss', array('controller' => 'ExplainationController', 'method'=>'showXSS')));
+$routes->add('explaination_csrf', new Route(constant('URL_SUBFOLDER') . '/explaination/csrf', array('controller' => 'ExplainationController', 'method'=>'showCSRF')));
+$routes->add('explaination_osci', new Route(constant('URL_SUBFOLDER') . '/explaination/osci', array('controller' => 'ExplainationController', 'method'=>'showOSCI')));
+$routes->add('explaination_dt', new Route(constant('URL_SUBFOLDER') . '/explaination/dt', array('controller' => 'ExplainationController', 'method'=>'showDT')));
