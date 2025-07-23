@@ -61,15 +61,17 @@ For each of these vulnerabilities, I plan to create a webpage containing:
 
 Simply run 
 ```bash 
-docker compose up --build
+docker compose -f compose-dev.yaml up
 ```
 
-3 VM will start : 
-- Ngnix
-- PHP
-- MariaDB
+5 VM will start : 
+- nginx
+- php
+- db
+- mock_nginx
+- mock_php
 
-The webpage is hosted on localhost on port 8080.
+These webpages are hosted on localhost on port 8080 and 8081.
 
 ## Tech
 
