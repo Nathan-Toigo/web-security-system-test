@@ -29,13 +29,13 @@ For each of these vulnerabilities, I plan to create a webpage containing:
 		<td>SQLi</td>
 		<td align="center">✅</td>
 		<td align="center">✅</td>
-		<td align="center">❌</td>
+		<td align="center">✅</td>
   	</tr>
 	<tr>
 		<td>XSS</td>
 		<td align="center">✅</td>
 		<td align="center">✅</td>
-		<td align="center">❌</td>
+		<td align="center">✅</td>
   	</tr>
 	<tr>
 		<td>DT</td>
@@ -47,7 +47,7 @@ For each of these vulnerabilities, I plan to create a webpage containing:
 		<td>CSRF</td>
 		<td align="center">✅</td>
 		<td align="center">✅</td>
-		<td align="center">❌</td>
+		<td align="center">✅</td>
   	</tr>
 	<tr>
 		<td>OSCI</td>
